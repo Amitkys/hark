@@ -28,8 +28,21 @@ async function getUserFromEmail(email: string) {
 
 }
 
-async function 
+async function getTodoByUserId(id:number) {
+    const client = await getClient();
+
+    const selectUserText = 'SELECT * FROM todos WHERE userId = $1';
+    const userRes = await client.query(selectUserText, [id]);
+
+    console.log('getting Todos by user id');
+
+    for(let todo of userRes.rows){
+        console.log(`Title: ${todo.title}, Description: ${todo.description}, Status: ${todo.done}`);
+    }
+}
+
+getTodoByUserId(1);
 
 
 // getUserData();
-getUserFromEmail('amit@gmail.com');
+// getUserFromEmail('amit@gmail.com');
