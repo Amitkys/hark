@@ -1,1 +1,2 @@
-console.log('this is typescript');
+let a: number = 5;
+console.log('this is typescript', a);
